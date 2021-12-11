@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import axios from "axios";
 import {
   Container,
@@ -19,15 +20,33 @@ export const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios
-      .post(`${process.env.REACT_APP_BASE_URL}/register`, { email, password })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
+    if (
+      password.match(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#\$%\^&\*]).{8,}$/
+      )
+    ) {
+      axios
+        .post(`${process.env.REACT_APP_BASE_URL}/register`, { email, password })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      navigate("/logIn");
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "verification link sent to your email",
       });
-    navigate("/logIn");
+    } else {
+      Swal.fire({
+        position: "top",
+        icon: "warning",
+        title: "your password is weak",
+        text: "the password have top be at least 6 character and contain at least 1 Capital letter, small, special character, and number ",
+      });
+    }
   };
 
   return (
