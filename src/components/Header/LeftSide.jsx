@@ -10,11 +10,17 @@ export const LeftSide = () => {
       <Link color="inherit" underline="none" href="/" mr={2}>
         home
       </Link>
+      <Link color="inherit" underline="none" href="/myPosts" mr={2}>
+        my posts
+      </Link>
     </>
   ) : (
     <>
       <Link color="inherit" underline="none" href="/" mr={2}>
         home
+      </Link>
+      <Link color="inherit" underline="none" href="/myPosts" mr={2}>
+        my posts
       </Link>
     </>
   );

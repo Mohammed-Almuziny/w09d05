@@ -25,7 +25,7 @@ export const Login = ({ setUser, setRole, setToken }) => {
       e.preventDefault();
 
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/login`, { email, password })
+        .post(`${process.env.REACT_APP_BASE_URL}/login`, { nameOrEmail: email, password })
         .then((response) => {
           const data = {
             user: response.data.result.email,
@@ -56,10 +56,9 @@ export const Login = ({ setUser, setRole, setToken }) => {
             <TextField
               onChange={(e) => setEmail(e.target.value)}
               fullWidth
-              type="email"
-              id="email"
-              label="email"
-              placeholder="email"
+              id="userNameOrEmail"
+              label="user name or email"
+              placeholder="user name or email"
               margin="normal"
               required
             />

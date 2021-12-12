@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 
 export const Register = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,7 +27,11 @@ export const Register = () => {
       )
     ) {
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/register`, { email, password })
+        .post(`${process.env.REACT_APP_BASE_URL}/register`, {
+          name,
+          email,
+          password,
+        })
         .then((response) => {
           console.log(response);
         })
@@ -57,6 +62,15 @@ export const Register = () => {
       <Box sx={{ bgcolor: "background.paper", p: 2 }}>
         <form onSubmit={handleSubmit}>
           <FormGroup>
+            <TextField
+              onChange={(e) => setName(e.target.value)}
+              fullWidth
+              id="userName"
+              label="User Name"
+              placeholder="User Name"
+              margin="normal"
+              required
+            />
             <TextField
               onChange={(e) => setEmail(e.target.value)}
               fullWidth
