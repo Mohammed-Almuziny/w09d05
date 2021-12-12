@@ -47,17 +47,14 @@ export const MyPosts = () => {
         <AddPost render={render} setRender={setRender} />
       </Box>
       <Grid container>
-        {
-          posts.map((post) => (
-            <PostsCard post={post} key={post._id} />
-          ))
-          // <TodoCard
-          //   todo={todo}
-          //   render={render}
-          //   setRender={setRender}
-          //   key={todo._id}
-          // />
-        }
+        {posts.map((post) => (
+          <PostsCard
+            post={post}
+            render={render}
+            setRender={setRender}
+            key={post._id}
+          />
+        ))}
       </Grid>
     </Container>
   ) : (
