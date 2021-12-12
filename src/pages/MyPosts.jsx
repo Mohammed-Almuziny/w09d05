@@ -1,8 +1,9 @@
 import { React, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Box, Grid, Typography } from "@mui/material";
 
+import { AddPost } from "./../components/AddPost";
 import { PostsCard } from "./../components/PostsCard";
 
 export const MyPosts = () => {
@@ -35,12 +36,20 @@ export const MyPosts = () => {
     // eslint-disable-next-line
   }, []);
 
+  useEffect(() => {
+    getPosts();
+    // eslint-disable-next-line
+  }, [render]);
+
   return user ? (
     <Container>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <AddPost render={render} setRender={setRender} />
+      </Box>
       <Grid container>
         {
           posts.map((post) => (
-            <PostsCard post={post} key={post._id}/>
+            <PostsCard post={post} key={post._id} />
           ))
           // <TodoCard
           //   todo={todo}
