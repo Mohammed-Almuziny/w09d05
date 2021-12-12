@@ -1,9 +1,26 @@
-import React from "react";
+import { React, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Grid, Card, CardActions } from "@mui/material";
+import { Grid, Card, CardActions, IconButton, Collapse } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { styled } from "@mui/material/styles";
+
+import { Comments } from "./Comments";
+
+const ExpandMore = styled((props) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform", {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
 
 export const PostsCard = ({ post, render, setRender }) => {
+  const [expanded, setExpanded] = useState(false);
+
   const { token } = useSelector((state) => state.account);
 
   const handleDelete = (postId) => {
@@ -53,6 +70,10 @@ export const PostsCard = ({ post, render, setRender }) => {
     }
   };
 
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
   return (
     <Grid item lg={12} md={12} sm={12} xs={12}>
       <Card>
@@ -69,6 +90,18 @@ export const PostsCard = ({ post, render, setRender }) => {
         >
           update
         </CardActions>
+        comments:
+        <ExpandMore
+          expand={expanded}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </ExpandMore>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <Comments postComments={post.comments} />
+        </Collapse>
       </Card>
     </Grid>
   );
