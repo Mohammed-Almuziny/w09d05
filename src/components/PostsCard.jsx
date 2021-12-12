@@ -24,6 +24,35 @@ export const PostsCard = ({ post, render, setRender }) => {
     }
   };
 
+  const handleUpdate = (postId) => {
+    try {
+      let description = prompt("Please enter your post new description");
+
+      if (description) {
+        axios
+          .put(
+            `${process.env.REACT_APP_BASE_URL}/posts/update`,
+            {
+              postId,
+              desc: description,
+            },
+            {
+              headers: { Authorization: "Bearer " + token },
+            }
+          )
+          .then((result) => {
+            setRender(render + 1);
+            console.log(result);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Grid item lg={12} md={12} sm={12} xs={12}>
       <Card>
@@ -34,6 +63,12 @@ export const PostsCard = ({ post, render, setRender }) => {
           ❌
         </CardActions>
         <p>{post.desc}</p>
+        <CardActions
+          onClick={() => handleUpdate(post._id)}
+          sx={{ display: "flex", justifyContent: "end" }}
+        >
+          update
+        </CardActions>
       </Card>
     </Grid>
   );
