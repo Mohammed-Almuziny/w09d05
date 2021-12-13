@@ -1,7 +1,14 @@
 import { React, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Grid, Card, CardActions, IconButton, Collapse } from "@mui/material";
+import {
+  Grid,
+  Card,
+  CardActions,
+  IconButton,
+  Collapse,
+  Typography,
+} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
 
@@ -19,6 +26,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export const PostsCard = ({ post, render, setRender }) => {
+  console.log(post);
   const [expanded, setExpanded] = useState(false);
 
   const { token } = useSelector((state) => state.account);
@@ -83,6 +91,7 @@ export const PostsCard = ({ post, render, setRender }) => {
         >
           ❌
         </CardActions>
+        <Typography variant="h6">by {post.createrID.name}</Typography>
         <p>{post.desc}</p>
         <CardActions
           onClick={() => handleUpdate(post._id)}
