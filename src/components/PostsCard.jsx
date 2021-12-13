@@ -109,7 +109,12 @@ export const PostsCard = ({ post, render, setRender }) => {
           <ExpandMoreIcon />
         </ExpandMore>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Comments postComments={post.comments} />
+          <Comments
+            postComments={post.comments}
+            postId={post._id}
+            render={render}
+            setRender={setRender}
+          />
         </Collapse>
       </Card>
     </Grid>
