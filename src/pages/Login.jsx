@@ -25,10 +25,14 @@ export const Login = ({ setUser, setRole, setToken }) => {
       e.preventDefault();
 
       axios
-        .post(`${process.env.REACT_APP_BASE_URL}/login`, { nameOrEmail: email, password })
+        .post(`${process.env.REACT_APP_BASE_URL}/login`, {
+          nameOrEmail: email,
+          password,
+        })
         .then((response) => {
           const data = {
             user: response.data.result.email,
+            userId: response.data.result._id,
             role: response.data.result.role.role,
             token: response.data.token,
           };

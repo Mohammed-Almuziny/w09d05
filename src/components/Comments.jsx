@@ -56,7 +56,13 @@ export const Comments = ({ postComments, postId, render, setRender }) => {
             key={comment._id}
           >
             <Card>
-              <DeleteComment />
+              <DeleteComment
+                creatorId={comment.creatorId._id}
+                commentId={comment._id}
+                render={render}
+                setRender={setRender}
+              />
+
               <Typography variant="h6" p={1}>
                 by {comment.creatorId.name}
               </Typography>
