@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 
 import { login } from "./../reducers/account";
+import { LogWithGoogle } from "./../components/LogWithGoogle";
 
 export const Login = ({ setUser, setRole, setToken }) => {
   const [email, setEmail] = useState("");
@@ -82,6 +83,7 @@ export const Login = ({ setUser, setRole, setToken }) => {
               log in
             </Button>
           </Typography>
+          <LogWithGoogle />
         </form>
       </Box>
     </Container>

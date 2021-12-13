@@ -4,51 +4,49 @@
 
 ## User Stories
 
-- **Register:** As an anon I can register in the website so that I can create my own todo list
-- **Login:** As a user I can login to in the website so that I can create my own todo list
-- **Logout:** As a user I can logout from the website so no one else can use it
-- **Add Todo** As a user I can add an task to my todo list
-- **change my todo** As a user I can change my task name
-- **delete todo task** As a user I can delete one of my todo task
-- **detele other user todos** As an admin I can see all users todo then i can delete any one of them
-- **detele other user** As an a I admin I can see all users then i can delete any one of them
+- **Register** As an anon i can register in the website so that I can create my own todo list
+- **Login** As a user i can login to in the website so that I can create my own todo list
+- **Logout** As a user i can logout from the website so no one else can use it
+- **Create post** As a user I can create an post
+- **My Posts** As a user i can see my posts
+- **All Posts** As a use i can see all posts of other users
+- **Update Posts** As a user I can change my post
+- **Delete Posts** As a user I can delete my post
+- **Read Comments** As a user i can see any post comments
+- **Create Comments** As a user I can give comments to a post
+- **Update Comments** As a user I can change my comments
+- **Delete Comments** As a user I can delete my comments
+- **Admin** As an admin i can delete any posts or comments
 
 # Client / Frontend
 
 ## React Router Routes (React App)
 
-| Path        | Component | Permissions                 | Behavior                                                             |
-| ----------- | --------- | --------------------------- | -------------------------------------------------------------------- |
-| `/`         | n/a       | public `<Route>`            | Home page                                                            |
-| `/register` | Register  | anon only `<AnonRoute>`     | Register form, link to login, navigate to log in page after register |
-| `/login`    | Login     | anon only `<AnonRoute>`     | Login form, link to register, navigate to homepage after login       |
-| `/todos`    | Todos     | user only `<PrivateRoute>`  | Shows user todo list                                                 |
-| `/allTodos` | AllTodos  | admin only `<PrivateRoute>` | Shows other users todo list                                          |
-| `/allUsers` | AllUsers  | admin only `<PrivateRoute>` | Shows other users todo list                                          |
+| Path        | Component | Permissions                | Behavior                                                             |
+| ----------- | --------- | -------------------------- | -------------------------------------------------------------------- |
+| `/`         | n/a       | public `<Route>`           | Home page                                                            |
+| `/register` | Register  | anon only `<AnonRoute>`    | Register form, link to login, navigate to log in page after register |
+| `/login`    | Login     | anon only `<AnonRoute>`    | Login form, link to register, navigate to homepage after login       |
+| `/myPosts`  | MyPosr    | user only `<PrivateRoute>` | Shows user his posts                                                 |
+| `/allPosts` | AllPosts  | user only `<PrivateRoute>` | Shows other users posts                                              |
 
 ## Components
 
 - Header
 - LeftSide
 - RightSide
-- AddTodo
-- TodoCard
-- UserCard
-- AllTodos
-- AllUsers
-- Login
-- Register
-- Todos
+- AddPost
+- Comments
+- DeleteComment
+- LikeButton
+- PostsCard
+- UpdateComment
 
 ## Reducers
 
 - Account Reducer
-  - login(user, role, token)
+  - login(user, userId, role, token)
   - logout()
-- Tasks Resucer
-  - set(todos)
-- Users reducer
-  - setUsers(usersList)
 
 ## Diagrams
 
@@ -58,4 +56,4 @@
 
 ## GitHub Link
 
-[repository Link](https://github.com/Mohammed-Almuziny/w09d03)
+[repository Link](https://github.com/Mohammed-Almuziny/w09d05)

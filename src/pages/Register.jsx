@@ -11,6 +11,8 @@ import {
   Button,
 } from "@mui/material";
 
+import { LogWithGoogle } from "./../components/LogWithGoogle";
+
 export const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -97,6 +99,8 @@ export const Register = () => {
               register
             </Button>
           </Typography>
+
+          <LogWithGoogle />
         </form>
       </Box>
     </Container>
