@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { Grid, Card, Typography, Button } from "@mui/material";
 
+import { DeleteComment } from "./DeleteComment";
+
 export const Comments = ({ postComments, postId, render, setRender }) => {
   const { token } = useSelector((state) => state.account);
 
@@ -54,6 +56,7 @@ export const Comments = ({ postComments, postId, render, setRender }) => {
             key={comment._id}
           >
             <Card>
+              <DeleteComment />
               <Typography variant="h6" p={1}>
                 by {comment.creatorId.name}
               </Typography>
