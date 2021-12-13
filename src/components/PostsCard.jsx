@@ -8,11 +8,13 @@ import {
   IconButton,
   Collapse,
   Typography,
+  Box,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
 
 import { Comments } from "./Comments";
+import { LikeButton } from "./LikeButton";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -26,7 +28,6 @@ const ExpandMore = styled((props) => {
 }));
 
 export const PostsCard = ({ post, render, setRender }) => {
-  console.log(post);
   const [expanded, setExpanded] = useState(false);
 
   const { token } = useSelector((state) => state.account);
@@ -39,7 +40,6 @@ export const PostsCard = ({ post, render, setRender }) => {
         })
         .then((result) => {
           setRender(render + 1);
-          console.log(result);
         })
         .catch((err) => {
           console.log(err);
@@ -93,12 +93,19 @@ export const PostsCard = ({ post, render, setRender }) => {
         </CardActions>
         <Typography variant="h6">by {post.createrID.name}</Typography>
         <p>{post.desc}</p>
-        <CardActions
-          onClick={() => handleUpdate(post._id)}
-          sx={{ display: "flex", justifyContent: "end" }}
-        >
-          update
-        </CardActions>
+        <Box sx={{ display: "flex", justifyContent: "end" }}>
+          <CardActions>
+            <LikeButton
+              postId={post._id}
+              likes={post.likes}
+              render={render}
+              setRender={setRender}
+            />
+          </CardActions>
+          <CardActions onClick={() => handleUpdate(post._id)}>
+            update
+          </CardActions>
+        </Box>
         comments:
         <ExpandMore
           expand={expanded}
