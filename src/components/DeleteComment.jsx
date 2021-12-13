@@ -24,10 +24,6 @@ export const DeleteComment = ({ creatorId, commentId, render, setRender }) => {
     }
   };
 
-  console.log("creater :", creatorId);
-  console.log("user :", userId);
-
-  console.log(role);
   return role === "admin" || userId === creatorId ? (
     <div>
       <CardActions

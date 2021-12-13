@@ -4,6 +4,7 @@ import axios from "axios";
 import { Grid, Card, Typography, Button } from "@mui/material";
 
 import { DeleteComment } from "./DeleteComment";
+import { UpdateComment } from "./UpdateComment";
 
 export const Comments = ({ postComments, postId, render, setRender }) => {
   const { token } = useSelector((state) => state.account);
@@ -69,6 +70,13 @@ export const Comments = ({ postComments, postId, render, setRender }) => {
               <Typography variant="body" p={1}>
                 {comment.desc}
               </Typography>
+
+              <UpdateComment
+                creatorId={comment.creatorId._id}
+                commentId={comment._id}
+                render={render}
+                setRender={setRender}
+              />
             </Card>
           </Grid>
         ))}
