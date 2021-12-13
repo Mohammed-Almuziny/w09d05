@@ -50,6 +50,12 @@ export const Login = ({ setUser, setRole, setToken }) => {
     }
   };
 
+  const handleForgetPass = () => {
+    const email = prompt("Please enter email");
+
+    axios.post(`${process.env.REACT_APP_BASE_URL}/forgetPass`, { email });
+  };
+
   return (
     <Container maxWidth="md">
       <Typography variant="h3" align="center" mb={2}>
@@ -78,12 +84,22 @@ export const Login = ({ setUser, setRole, setToken }) => {
               required
             />
           </FormGroup>
+
           <Typography align="center" my={2}>
             <Button variant="contained" type="submit">
               log in
             </Button>
           </Typography>
           <LogWithGoogle />
+
+          <Typography
+            onClick={() => handleForgetPass()}
+            variant="button"
+            align="center"
+            style={{ color: "#00adb5" }}
+          >
+            forget password?
+          </Typography>
         </form>
       </Box>
     </Container>
