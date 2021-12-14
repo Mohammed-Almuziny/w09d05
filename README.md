@@ -7,6 +7,7 @@
 - **Register** As an anon i can register in the website so that I can create my own todo list
 - **Login** As a user i can login to in the website so that I can create my own todo list
 - **Logout** As a user i can logout from the website so no one else can use it
+- **Forget Password** As a user if i forget password i can get reset password link to my email
 - **Create post** As a user I can create an post
 - **My Posts** As a user i can see my posts
 - **All Posts** As a use i can see all posts of other users
@@ -22,13 +23,14 @@
 
 ## React Router Routes (React App)
 
-| Path        | Component | Permissions                | Behavior                                                             |
-| ----------- | --------- | -------------------------- | -------------------------------------------------------------------- |
-| `/`         | n/a       | public `<Route>`           | Home page                                                            |
-| `/register` | Register  | anon only `<AnonRoute>`    | Register form, link to login, navigate to log in page after register |
-| `/login`    | Login     | anon only `<AnonRoute>`    | Login form, link to register, navigate to homepage after login       |
-| `/myPosts`  | MyPosr    | user only `<PrivateRoute>` | Shows user his posts                                                 |
-| `/allPosts` | AllPosts  | user only `<PrivateRoute>` | Shows other users posts                                              |
+| Path         | Component | Permissions                | Behavior                                                                   |
+| ------------ | --------- | -------------------------- | -------------------------------------------------------------------------- |
+| `/`          | n/a       | public `<Route>`           | Home page                                                                  |
+| `/register`  | Register  | anon only `<AnonRoute>`    | Register form, link to login, navigate to log in page after register       |
+| `/Resetpass` | Resetpass | user only `<AnonRoute>`    | reset password link , link to login,navigate to log in page after register |
+| `/login`     | Login     | anon only `<AnonRoute>`    | Login form, link to register, navigate to homepage after login             |
+| `/myPosts`   | MyPosr    | user only `<PrivateRoute>` | Shows user his posts                                                       |
+| `/allPosts`  | AllPosts  | user only `<PrivateRoute>` | Shows other users posts                                                    |
 
 ## Components
 
@@ -39,6 +41,7 @@
 - Comments
 - DeleteComment
 - LikeButton
+- LogWithGoogle
 - PostsCard
 - UpdateComment
 
