@@ -30,6 +30,7 @@ export const ResetPass = () => {
       });
     } else if (
       !password1.match(
+        // eslint-disable-next-line
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#\$%\^&\*]).{8,}$/
       )
     ) {

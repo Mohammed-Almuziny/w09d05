@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { Container, Box, Grid, Typography } from "@mui/material";
 
@@ -11,8 +11,6 @@ export const MyPosts = () => {
   const [posts, setPosts] = useState([]);
 
   const { user, token } = useSelector((state) => state.account);
-
-  const dispatch = useDispatch();
 
   const getPosts = () => {
     try {

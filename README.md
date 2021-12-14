@@ -1,6 +1,6 @@
 ## Description
 
-**_socialSite_** is a website allow registered user to create their own todo list, also allow the user to change the task or delete it.
+**_socialSite_** this API is social media useing crud operations.
 
 ## User Stories
 

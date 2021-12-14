@@ -56,6 +56,7 @@ export const LikeButton = ({ postId, likes, render, setRender }) => {
 
   useEffect(() => {
     checkLike();
+    // eslint-disable-next-line
   }, []);
 
   return isLiked ? (

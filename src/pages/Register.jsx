@@ -25,6 +25,7 @@ export const Register = () => {
 
     if (
       password.match(
+        // eslint-disable-next-line
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#\$%\^&\*]).{8,}$/
       )
     ) {
