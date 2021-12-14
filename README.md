@@ -1,6 +1,6 @@
 ## Description
 
-**_TodosSite_** is a website allow registered user to create their own todo list, also allow the user to change the task or delete it.
+**_socialSite_** is a website allow registered user to create their own todo list, also allow the user to change the task or delete it.
 
 ## User Stories
 
