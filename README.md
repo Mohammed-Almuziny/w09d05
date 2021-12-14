@@ -161,7 +161,7 @@ user model
 ## Backend routes
 
 | HTTP Method | URL                         | Request Body                    | Success status | Error Status | Description                                                     |
-| ----------- | --------------------------- | ------------------------------- | -------------- | ------------ | --------------------------------------------------------------- | --- |
+| ----------- | --------------------------- | ------------------------------- | -------------- | ------------ | --------------------------------------------------------------- |
 | POST        | `/createRole`               | { role, permissions }           | 201            | 400          | create new role                                                 |
 | GET         | `/getRole`                  | { name, email, password, role } | 200            | 400          | show all role in the database                                   |
 | POST        | `/register`                 | {username, password}            | 201            | 401          | create new user                                                 |
@@ -183,7 +183,7 @@ user model
 | POST        | `/comments/create`          | { desc, ref }                   | 201            | 400          | create new comments                                             |
 | GET         | `/comments/forPost/:postId` | (empty)                         | 200            | 400          | get post comments                                               |
 | PUT         | `/comments/`                | { commentId, newDesc }          | 200            | 404,400      | update comments                                                 |
-| DELETE      | `/comments/:commentId`      | (empty)                         | 200            | 400          | delete comments                                                 |     |
+| DELETE      | `/comments/:commentId`      | (empty)                         | 200            | 400          | delete comments                                                 |
 
 # Links
 
