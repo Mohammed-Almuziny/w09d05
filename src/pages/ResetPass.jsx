@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import axios from "axios";
 import {
   Container,
@@ -16,24 +17,47 @@ export const ResetPass = () => {
 
   const { token } = useParams();
 
-  console.log(token);
-
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    try {
-      e.preventDefault();
+    e.preventDefault();
 
-      axios
-        .post(`${process.env.REACT_APP_BASE_URL}/login`)
-        .then(() => {
-          navigate("/");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } catch (err) {
-      console.log(err);
+    if (password1 !== password2) {
+      Swal.fire({
+        position: "top",
+        icon: "warning",
+        title: "your passwords dont match",
+      });
+    } else if (
+      !password1.match(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#\$%\^&\*]).{8,}$/
+      )
+    ) {
+      Swal.fire({
+        position: "top",
+        icon: "warning",
+        title: "your password is weak",
+        text: "the password have top be at least 6 character and contain at least 1 Capital letter, small, special character, and number ",
+      });
+    } else {
+      try {
+        axios
+          .post(
+            `${process.env.REACT_APP_BASE_URL}/setPass`,
+            { newPassword: password1 },
+            {
+              headers: { authorization: "Bearer " + token },
+            }
+          )
+          .then(() => {
+            navigate("/logIn");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -43,7 +67,7 @@ export const ResetPass = () => {
         Reset password
       </Typography>
       <Box sx={{ bgcolor: "background.paper", p: 2 }}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <FormGroup>
             <TextField
               onChange={(e) => setPassword1(e.target.value)}
