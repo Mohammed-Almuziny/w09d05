@@ -37,7 +37,7 @@ export const AddPost = ({ render, setRender }) => {
   };
 
   return addMore ? (
-    <div>
+    <div mb={2}>
       <form onSubmit={handleSubmit}>
         <TextField
           onChange={(e) => setDescription(e.target.value)}
@@ -53,7 +53,7 @@ export const AddPost = ({ render, setRender }) => {
     </div>
   ) : (
     <Button onClick={() => setAddMore(true)} variant="contained">
-      Add More
+      Add New Post
     </Button>
   );
 };

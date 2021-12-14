@@ -44,7 +44,7 @@ export const Comments = ({ postComments, postId, render, setRender }) => {
         send comments
       </Button>
 
-      <Grid container m={1} p={1}>
+      <Grid container p={1}>
         {postComments.map((comment) => (
           <Grid
             item

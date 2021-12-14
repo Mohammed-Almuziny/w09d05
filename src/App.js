@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router";
 
 import { Header } from "./components/Header";
+import { Home } from "./pages/Home";
 import { MyPosts } from "./pages/MyPosts";
 import { AllPosts } from "./pages/AllPosts";
 import { Register } from "./pages/Register";
@@ -13,6 +14,7 @@ function App() {
       <Header />
 
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="myPosts" element={<MyPosts />} />
         <Route path="allPosts" element={<AllPosts />} />
         <Route path="/register" element={<Register />} />

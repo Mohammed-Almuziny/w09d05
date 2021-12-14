@@ -29,6 +29,7 @@ export const DeleteComment = ({ creatorId, commentId, render, setRender }) => {
       <CardActions
         onClick={() => handleDelete()}
         sx={{ display: "flex", justifyContent: "end" }}
+        className="pointer"
       >
         ❌
       </CardActions>

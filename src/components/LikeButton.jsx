@@ -62,14 +62,22 @@ export const LikeButton = ({ postId, likes, render, setRender }) => {
   return isLiked ? (
     <Box sx={{ display: "flex" }}>
       <Typography>{likes.length}</Typography>
-      <Typography onClick={() => handleLike()} attribute="button">
+      <Typography
+        onClick={() => handleLike()}
+        attribute="button"
+        className="pointer"
+      >
         ❤️
       </Typography>
     </Box>
   ) : (
     <Box sx={{ display: "flex" }}>
       <Typography>{likes.length}</Typography>
-      <Typography onClick={() => handleLike()} attribute="button">
+      <Typography
+        onClick={() => handleLike()}
+        attribute="button"
+        className="pointer"
+      >
         🤍
       </Typography>
     </Box>

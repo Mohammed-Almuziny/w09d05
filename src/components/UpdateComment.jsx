@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { CardActions } from "@mui/material";
+import { CardActions, Typography } from "@mui/material";
 
 export const UpdateComment = ({ creatorId, commentId, render, setRender }) => {
   const { userId, role, token } = useSelector((state) => state.account);
@@ -41,8 +41,9 @@ export const UpdateComment = ({ creatorId, commentId, render, setRender }) => {
       <CardActions
         onClick={() => handleUpdate()}
         sx={{ display: "flex", justifyContent: "end" }}
+        className="pointer"
       >
-        update
+        <Typography className="pointer">update</Typography>
       </CardActions>
     </div>
   ) : (

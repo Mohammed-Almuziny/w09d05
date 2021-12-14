@@ -83,16 +83,21 @@ export const PostsCard = ({ post, render, setRender }) => {
   };
 
   return (
-    <Grid item lg={12} md={12} sm={12} xs={12}>
+    <Grid item lg={12} md={12} sm={12} xs={12} mb={2}>
       <Card>
         <CardActions
           onClick={() => handleDelete(post._id)}
           sx={{ display: "flex", justifyContent: "end" }}
+          className="pointer"
         >
           ❌
         </CardActions>
-        <Typography variant="h6">by {post.createrID.name}</Typography>
-        <p>{post.desc}</p>
+        <Typography variant="h6" ml={2}>
+          by {post.createrID.name}
+        </Typography>
+        <Typography variant="body" ml={2}>
+          {post.desc}
+        </Typography>
         <Box sx={{ display: "flex", justifyContent: "end" }}>
           <CardActions>
             <LikeButton
@@ -103,26 +108,28 @@ export const PostsCard = ({ post, render, setRender }) => {
             />
           </CardActions>
           <CardActions onClick={() => handleUpdate(post._id)}>
-            update
+            <Typography className="pointer">update</Typography>
           </CardActions>
         </Box>
-        comments:
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Comments
-            postComments={post.comments}
-            postId={post._id}
-            render={render}
-            setRender={setRender}
-          />
-        </Collapse>
+        <Box ml={2}>
+          comments: {post.comments.length}
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <Comments
+              postComments={post.comments}
+              postId={post._id}
+              render={render}
+              setRender={setRender}
+            />
+          </Collapse>
+        </Box>
       </Card>
     </Grid>
   );

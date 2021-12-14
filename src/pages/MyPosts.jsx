@@ -41,7 +41,7 @@ export const MyPosts = () => {
 
   return user ? (
     <Container>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box mb={2} sx={{ display: "flex", justifyContent: "center" }}>
         <AddPost render={render} setRender={setRender} />
       </Box>
       <Grid container>
